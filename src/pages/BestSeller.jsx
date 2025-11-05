@@ -2,7 +2,7 @@ import react from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { IoIosArrowDropright } from "react-icons/io";
 import { MdOutlineCardGiftcard } from "react-icons/md";
-import BestSellerBanner from '../assets/images/BestSellerMainImage.png'
+import BestSellerBanner from '../assets/images/BestsellerMainImage.png'
 import BestSellerCard from '../components/BestSellerCard';
 
 const BestSeller = () => {
