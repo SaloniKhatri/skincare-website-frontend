@@ -5,7 +5,7 @@ import { useCart } from '../context/cartContext';
 
 import Image1 from '../assets/images/WatermelonToner.png'
 import Image2 from '../assets/images/WatermelonSerummm.png'
-import Image3 from '../assets/images/GylcolicshowerGel.png'
+import Image3 from '../assets/images/GylcolicShowerGel.png'
 import Image4 from '../assets/images/WatermelonRollon.png'
 
 
