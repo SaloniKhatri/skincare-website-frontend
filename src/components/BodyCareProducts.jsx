@@ -5,7 +5,7 @@ import React from 'react'
 
 import { useCart } from '../context/cartContext';
 
-import Image1 from '../assets/images/VitaminCLotion.png'
+import Image1 from '../assets/images/vitaminCLotion.png'
 import Image2 from '../assets/images/DryProduct22.png'
 
 import { AiFillStar } from "react-icons/ai";
