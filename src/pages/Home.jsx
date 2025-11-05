@@ -7,9 +7,9 @@ import { motion } from "framer-motion";
 import Carousel from '../components/Carousel';
 import BannerCarousel from '../components/BannerCarousel';
 
-import Banner2 from '../assets/images/banner2.png'
-import Banner3 from '../assets/images/banner3.png'
-import Banner4 from '../assets/images/banner4.png'
+import Banner2 from '../assets/images/Banner2.png'
+import Banner3 from '../assets/images/Banner3.png'
+import Banner4 from '../assets/images/Banner4.png'
 
 import Card1 from '../components/Card1';
 import Card2 from '../components/Card2';
