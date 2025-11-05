@@ -22,7 +22,7 @@ import SunscreenLogo from "../assets/images/LogoSunscreen.png";
 import MoisturiserLogo from "../assets/images/LogoMoisturizer.png"
 import SerumLogo from "../assets/images/LogoSerum.png"
 import ComboLogo from "../assets/images/LogoCombo.png"
-import FaceWashLogo from "../assets/images/LogoFaceWash.png"
+import FaceWashLogo from "../assets/images/LogoFacewash.png"
 import LipCareLogo from "../assets/images/LogoLipcare.png"
 import FaceMaskLogo from "../assets/images/LogoFacemask.png"
 import FaceTonerLogo from "../assets/images/LogoToner.png"
