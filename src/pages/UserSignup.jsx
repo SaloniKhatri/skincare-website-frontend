@@ -3,6 +3,8 @@ import Logo from "../assets/images/SkincareLogo.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const Signup = () => {
   const navigate = useNavigate();
 
@@ -21,7 +23,7 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/api/users/register`,
+        `${API_URL}/api/users/register`,
         formData,
         { withCredentials: true }
       );

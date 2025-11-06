@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const UserLogout = () => {
   const navigate = useNavigate();
 
@@ -15,7 +17,7 @@ const UserLogout = () => {
         }
 
         // Backend URL se call
-        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/skinCareWebsiteUsers/logout`, {
+        const response = await axios.get(`${API_URL}/skinCareWebsiteUsers/logout`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
