@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { formDataContext } from "../context/userContext.jsx";
 
-const API_URL = process.env.REACT_APP_API_URL;
+// const API_URL = process.env.REACT_APP_API_URL;
 
 const Login = () => {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        `${VITE_API_BASE_URL}/api/users/login`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/users/login`,
         { email, password },
         { withCredentials: true }
       );

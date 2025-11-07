@@ -23,7 +23,7 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        `${VITE_API_BASE_URL}/api/users/register`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/users/register`,
         formData,
         { withCredentials: true }
       );

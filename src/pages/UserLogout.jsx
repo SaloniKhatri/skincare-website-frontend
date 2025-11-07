@@ -17,7 +17,7 @@ const UserLogout = () => {
         }
 
         // Backend URL se call
-        const response = await axios.get(`${VITE_API_BASE_URL}/skinCareWebsiteUsers/logout`, {
+        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/skinCareWebsiteUsers/logout`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
