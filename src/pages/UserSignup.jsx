@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Logo from "../assets/images/SkincareLogo.png";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 
-const API_URL = process.env.REACT_APP_API_URL;
+// const API_URL = process.env.REACT_APP_API_URL;
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -22,11 +22,18 @@ const Signup = () => {
     };
 
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/api/users/register`,
-        formData,
-        { withCredentials: true }
-      );
+  const response = await fetch(
+    `${import.meta.env.VITE_API_BASE_URL}/api/users/register`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+      credentials: "include",
+    }
+  );
+
 
       if (response.status === 201) {
         alert("User created successfully!");

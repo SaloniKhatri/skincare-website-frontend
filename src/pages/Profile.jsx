@@ -6,6 +6,7 @@ import { IoIosArrowDropright } from "react-icons/io";
 import { MdOutlineCardGiftcard } from "react-icons/md";
 
 const Profile = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
     const { formData, logout } = useContext(formDataContext);
     const navigate = useNavigate();
 
@@ -29,8 +30,8 @@ const Profile = () => {
 
             {formData ? (
                 <div className="ps-6 pb-4">
-                    {/* <p>Name: {formData.name}</p>
-          <p>Email: {formData.email}</p> */}
+                    <p>Name: {formData.name}</p>
+                    <p>Email: {formData.email}</p>
                     <button
                         onClick={handleLogout}
                         className="mt-1 font-semibold underline text-black cursor-pointer"

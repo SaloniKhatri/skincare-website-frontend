@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = process.env.REACT_APP_API_URL;
+// const API_URL = process.env.REACT_APP_API_URL;
 
 const UserLogout = () => {
   const navigate = useNavigate();
@@ -17,12 +17,14 @@ const UserLogout = () => {
         }
 
         // Backend URL se call
-        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/skinCareWebsiteUsers/logout`, {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/skinCareWebsiteUsers/logout`, {
+          method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
           },
-          withCredentials: true,
+          credentials: "include", // same as withCredentials: true
         });
+
 
         if (response.status === 200) {
           localStorage.removeItem('token');

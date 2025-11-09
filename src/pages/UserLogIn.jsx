@@ -1,17 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
 import Logo from "../assets/images/SkincareLogo.png";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { formDataContext } from "../context/userContext.jsx";
-
-// const API_URL = process.env.REACT_APP_API_URL;
 
 const Login = () => {
   const navigate = useNavigate();
-  // const { setformData } = useContext(formDataContext);
   const { formData, setformData } = useContext(formDataContext);
-
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -25,22 +19,39 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
+      const response = await fetch(
         `${import.meta.env.VITE_API_BASE_URL}/api/users/login`,
-        { email, password },
-        { withCredentials: true }
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+          credentials: "include",
+        }
       );
 
+      const data = await response.json();
+      console.log("Login Response:", data);
+
       if (response.status === 200) {
-        const data = response.data;
-        setformData(data.user);
-        localStorage.setItem("token", data.token); // optional, backend already sets cookie
+        // ✅ backend direct user bhej raha hai (not data.user)
+        setformData(data);
+        localStorage.setItem("user", JSON.stringify(data));
+
+        // Agar token nahi mil raha backend se, to ye line optional hai
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+        }
+
         alert("Login successful!");
         navigate("/profile");
+      } else {
+        alert(data.message || "Login failed!");
       }
     } catch (err) {
-      console.error("Login error:", err.response?.data || err.message);
-      alert(err.response?.data?.message || "Login failed. Check credentials.");
+      console.error("Login error:", err);
+      alert("Login failed. Check credentials or try again.");
     }
 
     setEmail("");

@@ -4,41 +4,38 @@ import { createContext, useState, useEffect } from "react";
 export const formDataContext = createContext();
 
 const UserContext = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [formData, setformData] = useState({
-    email: '',
-    name: ''
-  });
+  const [formData, setformData] = useState(null);
 
+  // 🔹 Restore user from localStorage safely
   useEffect(() => {
-    const token = localStorage.getItem("token");
-     const user = localStorage.getItem("user");
-    if (token && user) {
-      setformData(JSON.parse(user)); // Restore login state
+    try {
+      const token = localStorage.getItem("token");
+      const storedUser = localStorage.getItem("user");
+
+      if (token && storedUser && storedUser !== "undefined") {
+        const parsedUser = JSON.parse(storedUser);
+        setformData(parsedUser); // ✅ Restore user
+      } else {
+        setformData(null);
+      }
+    } catch (err) {
+      console.error("Error parsing user:", err);
+      localStorage.removeItem("user");
     }
   }, []);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setformData({ token }); // Optional: fetch profile data from backend
-    }
-  }, []);
-
+  // 🔹 Logout function
   const logout = () => {
-    localStorage.removeItem("token"); // Token delete
-     localStorage.removeItem("user");
-    setformData(null); // Clear context
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setformData(null);
   };
 
-
   return (
-    <div>
-      <formDataContext.Provider value={{ formData, setformData, logout }}>
-        {children}
-      </formDataContext.Provider>
-    </div>
-  )
-}
+    <formDataContext.Provider value={{ formData, setformData, logout }}>
+      {children}
+    </formDataContext.Provider>
+  );
+};
 
-export default UserContext
+export default UserContext;
